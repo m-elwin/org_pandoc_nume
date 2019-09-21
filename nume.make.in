@@ -1,0 +1,24 @@
+# Include this file in your make file and set the following variables
+# HTML - the html files you wish to generate. Should have corresponding org files
+# PUBLISH - ssh url to publish results to. user@host:/path/to/files
+# NUME_PATH - path to this file
+# This file requires rsync, ssh, and pandoc > version 2.0
+
+.PHONY : all
+.PHONY : clean
+.PHONY : images
+.PHONY : publish
+all : $(HTML) images
+
+images:
+	cp images/* html/
+
+%.html : %.org
+	mkdir -p html
+	pandoc -s $< -o html/$@ --template=$(NUME_PATH)/nume.html --css=$(NUME_PATH)/nume.css --toc --toc-depth 2 --lua-filter=$(NUME_PATH)/links-to-html.lua
+	cp $(NUME_PATH)/nume.css html/nume.css
+clean:
+	rm -rf html/
+
+publish: all
+	rsync -avz --delete -e 'ssh' html/ $(PUBLISH)

@@ -1,0 +1,9 @@
+* Overview
+This directory consists of my template for creating and publishing web pages from org mode.
+
+To use, clone this repository.  Write org files.
+Create a Makefile based on the template Makefile in this repository specifying
+the files to publish, the remote path to publish, and the path to this repository.
+
+Then =make= will generate the html files in an html directory and =make publish= will
+publish them to a remote server.
