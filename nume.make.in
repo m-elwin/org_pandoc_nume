@@ -15,8 +15,7 @@ images:
 
 %.html : %.org
 	mkdir -p html
-	pandoc -s $< -o html/$@ --template=$(NUME_PATH)/nume.html --css=$(NUME_PATH)/nume.css --toc --toc-depth 2 --lua-filter=$(NUME_PATH)/links-to-html.lua
-	cp $(NUME_PATH)/nume.css html/nume.css
+	pandoc -s $< -o html/$@ --template=$(NUME_PATH)/nume.html -H $(NUME_PATH)/nume.css --toc --toc-depth 2 --lua-filter=$(NUME_PATH)/links-to-html.lua
 clean:
 	rm -rf html/
 
