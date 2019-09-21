@@ -11,7 +11,7 @@
 all : $(HTML) images
 
 images:
-	cp images/* html/
+	cp -f images/* html/ 2>/dev/null || :
 
 %.html : %.org
 	mkdir -p html
