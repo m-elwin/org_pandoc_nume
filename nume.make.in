@@ -15,6 +15,7 @@ images:
 
 %.html : %.org
 	mkdir -p html
+	mkdir -p html/$(dir $<)
 	pandoc -s $< -o html/$@ --template=$(NUME_PATH)/nume.html -H $(NUME_PATH)/nume.css --toc --toc-depth 2 --lua-filter=$(NUME_PATH)/links-to-html.lua
 
 %.pdf : %.tex
