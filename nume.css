@@ -19,6 +19,11 @@ nav#TOC{
     padding-right: 2em;
 }
 
+.home_up{
+    position: fixed;
+    right: 0em;
+    top: 0em;
+}
 .content{
     margin-left: 21%;
     padding-left: 4em;
@@ -45,6 +50,7 @@ html {
   overflow-y: scroll;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
+  padding: 0;
 }
 
 body {
